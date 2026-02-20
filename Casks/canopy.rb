@@ -17,6 +17,11 @@ cask "canopy" do
 
   app "Canopy.app"
 
+  postflight do
+    system_command "/usr/bin/xattr",
+                   args: ["-cr", "#{appdir}/Canopy.app"]
+  end
+
   zap trash: [
     "~/Library/Application Support/com.canopy.jira-viewer",
     "~/Library/Caches/com.canopy.jira-viewer",
