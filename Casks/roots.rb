@@ -17,6 +17,11 @@ cask "roots" do
 
   app "Roots.app"
 
+  postflight do
+    system_command "/usr/bin/xattr",
+                   args: ["-cr", "#{appdir}/Roots.app"]
+  end
+
   zap trash: [
     "~/Library/Application Support/com.roots.time-overview",
     "~/Library/Caches/com.roots.time-overview",
