@@ -1,0 +1,107 @@
+name: Update Cask
+
+on:
+  repository_dispatch:
+    types: [update-cask]
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Update cask file
+        run: |
+          APP="${{ github.event.client_payload.app }}"
+          VERSION="${{ github.event.client_payload.version }}"
+          TAG="${{ github.event.client_payload.tag }}"
+          SHA_ARM="${{ github.event.client_payload.sha_arm }}"
+          SHA_INTEL="${{ github.event.client_payload.sha_intel }}"
+
+          if [ "$APP" = "roots" ]; then
+            cat > Casks/roots.rb <<'RUBY'
+          cask "roots" do
+            version "__VERSION__,__TAG__"
+
+            on_arm do
+              url "https://github.com/konradmichalik/roots/releases/download/#{version.after_comma}/Roots_#{version.before_comma}_aarch64.dmg"
+              sha256 "__SHA_ARM__"
+            end
+
+            on_intel do
+              url "https://github.com/konradmichalik/roots/releases/download/#{version.after_comma}/Roots_#{version.before_comma}_x64.dmg"
+              sha256 "__SHA_INTEL__"
+            end
+
+            name "Roots"
+            desc "Work Time Overview & Management — aggregates Moco, Jira, Outlook, and Personio"
+            homepage "https://github.com/konradmichalik/roots"
+
+            app "Roots.app"
+
+            postflight do
+              system_command "/usr/bin/xattr",
+                             args: ["-cr", "#{appdir}/Roots.app"]
+            end
+
+            zap trash: [
+              "~/Library/Application Support/com.roots.time-overview",
+              "~/Library/Caches/com.roots.time-overview",
+            ]
+          end
+          RUBY
+            sed -i "s/__VERSION__/${VERSION}/g; s/__TAG__/${TAG}/g; s/__SHA_ARM__/${SHA_ARM}/g; s/__SHA_INTEL__/${SHA_INTEL}/g" Casks/roots.rb
+
+          elif [ "$APP" = "canopy" ]; then
+            cat > Casks/canopy.rb <<'RUBY'
+          cask "canopy" do
+            version "__VERSION__,__TAG__"
+
+            on_arm do
+              url "https://github.com/konradmichalik/canopy/releases/download/#{version.after_comma}/Canopy_#{version.before_comma}_aarch64.dmg"
+              sha256 "__SHA_ARM__"
+            end
+
+            on_intel do
+              url "https://github.com/konradmichalik/canopy/releases/download/#{version.after_comma}/Canopy_#{version.before_comma}_x64.dmg"
+              sha256 "__SHA_INTEL__"
+            end
+
+            name "Canopy"
+            desc "Jira companion with tree visualization, powerful filters, grouping, and change tracking"
+            homepage "https://github.com/konradmichalik/canopy"
+
+            app "Canopy.app"
+
+            postflight do
+              system_command "/usr/bin/xattr",
+                             args: ["-cr", "#{appdir}/Canopy.app"]
+            end
+
+            zap trash: [
+              "~/Library/Application Support/com.canopy.jira-viewer",
+              "~/Library/Caches/com.canopy.jira-viewer",
+            ]
+          end
+          RUBY
+            sed -i "s/__VERSION__/${VERSION}/g; s/__TAG__/${TAG}/g; s/__SHA_ARM__/${SHA_ARM}/g; s/__SHA_INTEL__/${SHA_INTEL}/g" Casks/canopy.rb
+
+          else
+            echo "Unknown app: ${APP}"
+            exit 1
+          fi
+
+      - name: Commit and push
+        run: |
+          APP="${{ github.event.client_payload.app }}"
+          TAG="${{ github.event.client_payload.tag }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add Casks/
+          git diff --cached --quiet && echo "No changes" && exit 0
+          git commit -m "chore: update ${APP} to ${TAG}"
+          git push
