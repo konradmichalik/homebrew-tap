@@ -12,10 +12,17 @@ brew tap konradmichalik/tap
 
 | Cask | Description |
 |------|-------------|
-| `roots` | Work Time Overview & Management |
+| [`roots`](https://github.com/konradmichalik/roots) | Work Time Overview — Moco, Jira, Outlook & Personio |
+| [`canopy`](https://github.com/konradmichalik/canopy) | Jira companion with tree visualization, filters & change tracking |
 
-### Roots
+### roots
 
 ```bash
 brew install --cask konradmichalik/tap/roots
+```
+
+### canopy
+
+```bash
+brew install --cask konradmichalik/tap/canopy
 ```
