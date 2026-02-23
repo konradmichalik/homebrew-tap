@@ -1,11 +1,23 @@
 # Homebrew Tap
 
-Homebrew tap for macOS apps by Konrad Michalik.
+Homebrew tap for macOS apps and tools by Konrad Michalik.
 
 ## Install
 
 ```bash
 brew tap konradmichalik/tap
+```
+
+## Available Formulas
+
+| Formula | Description |
+|---------|-------------|
+| [`worklog-git`](https://github.com/konradmichalik/worklog-git) | Aggregate git commits across repos for standups and time tracking |
+
+### worklog-git
+
+```bash
+brew install konradmichalik/tap/worklog-git
 ```
 
 ## Available Casks
