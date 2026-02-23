@@ -1,24 +1,26 @@
 class WorklogGit < Formula
   desc "Aggregate git commits across repos for standups and time tracking"
   homepage "https://github.com/konradmichalik/worklog-git"
-  version "0.1.0"
+  version "0.1.1"
   license "MIT"
 
   on_arm do
     url "https://github.com/konradmichalik/worklog-git/releases/download/v#{version}/worklog-git-arm64-apple-darwin.tar.gz"
-    sha256 "c7262ea01200ac78940df194b1c21c9dda313d2947b82b9fc7bb30c1fdb87ca4"
+    sha256 "1d6767bf5e6f6401a42328e19cd2d2f81aee43766f6e87644346220dd559178a"
   end
 
   on_intel do
     url "https://github.com/konradmichalik/worklog-git/releases/download/v#{version}/worklog-git-x86_64-apple-darwin.tar.gz"
-    sha256 "d93085b13edbfd1285319cf651b0f897aa0356666d89f6b18cc73df82ded999b"
+    sha256 "877c892d5a09ac742aebd4985226240b85d45f4e5992499472e3aed394c24bae"
   end
 
   def install
     bin.install "worklog-git"
+    bin.install "wl"
   end
 
   test do
     assert_match version.to_s, shell_output("#{bin}/worklog-git --version")
+    assert_match version.to_s, shell_output("#{bin}/wl --version")
   end
 end
