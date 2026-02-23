@@ -41,10 +41,12 @@ jobs:
 
             def install
               bin.install "worklog-git"
+              bin.install "wl"
             end
 
             test do
               assert_match version.to_s, shell_output("#{bin}/worklog-git --version")
+              assert_match version.to_s, shell_output("#{bin}/wl --version")
             end
           end
           RUBY
