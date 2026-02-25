@@ -1,18 +1,18 @@
 cask "worklog-app" do
-  version "0.1.0"
+  version "0.2.0,v0.2.0"
 
   on_arm do
-    url "https://github.com/konradmichalik/worklog-menubar/releases/download/v#{version}/worklog-app-arm64-apple-darwin.dmg"
-    sha256 "2522166e515960681a9e9bf441ebcc4d5b663be2e14a35805d056f44bc3b9147"
+    url "https://github.com/konradmichalik/worklog-menubar/releases/download/#{version.after_comma}/worklog-app-arm64-apple-darwin.dmg"
+    sha256 "a512e926015aa517c2ae0c853889a736d77a064c0861f787db0f136c85e46f9d"
   end
 
   on_intel do
-    url "https://github.com/konradmichalik/worklog-menubar/releases/download/v#{version}/worklog-app-x86_64-apple-darwin.dmg"
-    sha256 "fe5ec5c35f81b1a59d83e6d244b321f7208c87258645386567b79b84c2e0211e"
+    url "https://github.com/konradmichalik/worklog-menubar/releases/download/#{version.after_comma}/worklog-app-x86_64-apple-darwin.dmg"
+    sha256 "8d37a994802605f7357b0b3d7f2883124fc3db42578f0ca3248a0e26a9dcf224"
   end
 
   name "worklog.app"
-  desc "Native macOS menubar app for daily git commit aggregation"
+  desc "macOS menubar app that scans local git repositories and displays a commit worklog"
   homepage "https://github.com/konradmichalik/worklog-menubar"
 
   app "WorklogApp.app"
