@@ -90,38 +90,38 @@ jobs:
           RUBY
             sed -i "s/__VERSION__/${VERSION}/g; s/__TAG__/${TAG}/g; s/__SHA_ARM__/${SHA_ARM}/g; s/__SHA_INTEL__/${SHA_INTEL}/g" Casks/canopy.rb
 
-          elif [ "$APP" = "worklog-app" ]; then
-            cat > Casks/worklog-app.rb <<'RUBY'
-          cask "worklog-app" do
+          elif [ "$APP" = "devcap-app" ]; then
+            cat > Casks/devcap-app.rb <<'RUBY'
+          cask "devcap-app" do
             version "__VERSION__,__TAG__"
 
             on_arm do
-              url "https://github.com/konradmichalik/worklog-menubar/releases/download/#{version.after_comma}/worklog-app-arm64-apple-darwin.dmg"
+              url "https://github.com/konradmichalik/devcap-app/releases/download/#{version.after_comma}/devcap-arm64-apple-darwin.dmg"
               sha256 "__SHA_ARM__"
             end
 
             on_intel do
-              url "https://github.com/konradmichalik/worklog-menubar/releases/download/#{version.after_comma}/worklog-app-x86_64-apple-darwin.dmg"
+              url "https://github.com/konradmichalik/devcap-app/releases/download/#{version.after_comma}/devcap-x86_64-apple-darwin.dmg"
               sha256 "__SHA_INTEL__"
             end
 
-            name "worklog.app"
-            desc "macOS menubar app that scans local git repositories and displays a commit worklog"
-            homepage "https://github.com/konradmichalik/worklog-menubar"
+            name "devcap.app"
+            desc "macOS menubar app that scans local git repos and displays your daily commit recap"
+            homepage "https://github.com/konradmichalik/devcap-app"
 
-            app "WorklogApp.app"
+            app "DevcapApp.app"
 
             postflight do
               system_command "/usr/bin/xattr",
-                             args: ["-cr", "#{appdir}/WorklogApp.app"]
+                             args: ["-cr", "#{appdir}/DevcapApp.app"]
             end
 
             zap trash: [
-              "~/Library/Preferences/com.konradmichalik.worklog-app.plist",
+              "~/Library/Preferences/com.konradmichalik.devcap.plist",
             ]
           end
           RUBY
-            sed -i "s/__VERSION__/${VERSION}/g; s/__TAG__/${TAG}/g; s/__SHA_ARM__/${SHA_ARM}/g; s/__SHA_INTEL__/${SHA_INTEL}/g" Casks/worklog-app.rb
+            sed -i "s/__VERSION__/${VERSION}/g; s/__TAG__/${TAG}/g; s/__SHA_ARM__/${SHA_ARM}/g; s/__SHA_INTEL__/${SHA_INTEL}/g" Casks/devcap-app.rb
 
           else
             echo "Unknown app: ${APP}"
