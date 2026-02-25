@@ -21,36 +21,34 @@ jobs:
           SHA_ARM="${{ github.event.client_payload.sha_arm }}"
           SHA_INTEL="${{ github.event.client_payload.sha_intel }}"
 
-          if [ "$FORMULA" = "worklog-git" ]; then
-            cat > Formula/worklog-git.rb <<'RUBY'
-          class WorklogGit < Formula
+          if [ "$FORMULA" = "devcap" ]; then
+            cat > Formula/devcap.rb <<'RUBY'
+          class Devcap < Formula
             desc "Aggregate git commits across repos for standups and time tracking"
-            homepage "https://github.com/konradmichalik/worklog-git"
+            homepage "https://github.com/konradmichalik/devcap"
             version "__VERSION__"
             license "MIT"
 
             on_arm do
-              url "https://github.com/konradmichalik/worklog-git/releases/download/v#{version}/worklog-git-arm64-apple-darwin.tar.gz"
+              url "https://github.com/konradmichalik/devcap/releases/download/v#{version}/devcap-arm64-apple-darwin.tar.gz"
               sha256 "__SHA_ARM__"
             end
 
             on_intel do
-              url "https://github.com/konradmichalik/worklog-git/releases/download/v#{version}/worklog-git-x86_64-apple-darwin.tar.gz"
+              url "https://github.com/konradmichalik/devcap/releases/download/v#{version}/devcap-x86_64-apple-darwin.tar.gz"
               sha256 "__SHA_INTEL__"
             end
 
             def install
-              bin.install "worklog-git"
-              bin.install "wl"
+              bin.install "devcap"
             end
 
             test do
-              assert_match version.to_s, shell_output("#{bin}/worklog-git --version")
-              assert_match version.to_s, shell_output("#{bin}/wl --version")
+              assert_match version.to_s, shell_output("#{bin}/devcap --version")
             end
           end
           RUBY
-            sed -i "s/__VERSION__/${VERSION}/g; s/__SHA_ARM__/${SHA_ARM}/g; s/__SHA_INTEL__/${SHA_INTEL}/g" Formula/worklog-git.rb
+            sed -i "s/__VERSION__/${VERSION}/g; s/__SHA_ARM__/${SHA_ARM}/g; s/__SHA_INTEL__/${SHA_INTEL}/g" Formula/devcap.rb
 
           else
             echo "Unknown formula: ${FORMULA}"
