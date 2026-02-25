@@ -12,20 +12,27 @@ brew tap konradmichalik/tap
 
 | Formula | Description |
 |---------|-------------|
-| [`worklog-git`](https://github.com/konradmichalik/worklog-git) | Aggregate git commits across repos for standups and time tracking |
+| [`devcap`](https://github.com/konradmichalik/devcap) | Aggregate git commits across repos for standups and time tracking |
 
-### worklog-git
+### devcap
 
 ```bash
-brew install konradmichalik/tap/worklog-git
+brew install konradmichalik/tap/devcap
 ```
 
 ## Available Casks
 
 | Cask | Description |
 |------|-------------|
+| [`devcap-app`](https://github.com/konradmichalik/devcap-app) | Native macOS menubar app for daily git commit overview |
 | [`roots`](https://github.com/konradmichalik/roots) | Work Time Overview — Moco, Jira, Outlook & Personio |
 | [`canopy`](https://github.com/konradmichalik/canopy) | Jira companion with tree visualization, filters & change tracking |
+
+### devcap-app
+
+```bash
+brew install --cask konradmichalik/tap/devcap-app
+```
 
 ### roots
 
