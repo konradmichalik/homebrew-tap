@@ -123,6 +123,39 @@ jobs:
           RUBY
             sed -i "s/__VERSION__/${VERSION}/g; s/__TAG__/${TAG}/g; s/__SHA_ARM__/${SHA_ARM}/g; s/__SHA_INTEL__/${SHA_INTEL}/g" Casks/devcap-app.rb
 
+          elif [ "$APP" = "prtgbar" ]; then
+            cat > Casks/prtgbar.rb <<'RUBY'
+          cask "prtgbar" do
+            version "__VERSION__,__TAG__"
+
+            on_arm do
+              url "https://github.com/konradmichalik/prtgbar/releases/download/#{version.after_comma}/PRTGBar-aarch64-apple-darwin.dmg"
+              sha256 "__SHA_ARM__"
+            end
+
+            on_intel do
+              url "https://github.com/konradmichalik/prtgbar/releases/download/#{version.after_comma}/PRTGBar-x86_64-apple-darwin.dmg"
+              sha256 "__SHA_INTEL__"
+            end
+
+            name "PRTGBar"
+            desc "PRTG Network Monitor in your macOS menu bar"
+            homepage "https://github.com/konradmichalik/prtgbar"
+
+            app "PRTGBar.app"
+
+            postflight do
+              system_command "/usr/bin/xattr",
+                             args: ["-cr", "#{appdir}/PRTGBar.app"]
+            end
+
+            zap trash: [
+              "~/Library/Preferences/com.konradmichalik.prtgbar.plist",
+            ]
+          end
+          RUBY
+            sed -i "s/__VERSION__/${VERSION}/g; s/__TAG__/${TAG}/g; s/__SHA_ARM__/${SHA_ARM}/g; s/__SHA_INTEL__/${SHA_INTEL}/g" Casks/prtgbar.rb
+
           else
             echo "Unknown app: ${APP}"
             exit 1
