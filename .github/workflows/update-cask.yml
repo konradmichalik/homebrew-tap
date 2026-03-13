@@ -56,6 +56,40 @@ jobs:
           RUBY
             sed -i "s/__VERSION__/${VERSION}/g; s/__TAG__/${TAG}/g; s/__SHA_ARM__/${SHA_ARM}/g; s/__SHA_INTEL__/${SHA_INTEL}/g" Casks/roots.rb
 
+          elif [ "$APP" = "beacon" ]; then
+            cat > Casks/beacon.rb <<'RUBY'
+          cask "beacon" do
+            version "__VERSION__,__TAG__"
+
+            on_arm do
+              url "https://github.com/konradmichalik/beacon/releases/download/#{version.after_comma}/Beacon_#{version.before_comma}_aarch64.dmg"
+              sha256 "__SHA_ARM__"
+            end
+
+            on_intel do
+              url "https://github.com/konradmichalik/beacon/releases/download/#{version.after_comma}/Beacon_#{version.before_comma}_x64.dmg"
+              sha256 "__SHA_INTEL__"
+            end
+
+            name "Beacon"
+            desc "GitHub & GitLab notification hub for your macOS menu bar"
+            homepage "https://github.com/konradmichalik/beacon"
+
+            app "Beacon.app"
+
+            postflight do
+              system_command "/usr/bin/xattr",
+                             args: ["-cr", "#{appdir}/Beacon.app"]
+            end
+
+            zap trash: [
+              "~/Library/Application Support/com.beacon.notifications",
+              "~/Library/Caches/com.beacon.notifications",
+            ]
+          end
+          RUBY
+            sed -i "s/__VERSION__/${VERSION}/g; s/__TAG__/${TAG}/g; s/__SHA_ARM__/${SHA_ARM}/g; s/__SHA_INTEL__/${SHA_INTEL}/g" Casks/beacon.rb
+
           elif [ "$APP" = "canopy" ]; then
             cat > Casks/canopy.rb <<'RUBY'
           cask "canopy" do
