@@ -3,12 +3,12 @@ cask "prtgbar" do
 
   on_arm do
     url "https://github.com/konradmichalik/prtgbar/releases/download/#{version.after_comma}/PRTGBar-aarch64-apple-darwin.dmg"
-    sha256 "7a3356d81e9d383ef1b23951b780882a2d9f422342e04019e096042f02a07eb4"
+    sha256 "f8ff87d268d9fc35e607549aa0c9efafc88454076a4751785c47a1a9e28d3ade"
   end
 
   on_intel do
     url "https://github.com/konradmichalik/prtgbar/releases/download/#{version.after_comma}/PRTGBar-x86_64-apple-darwin.dmg"
-    sha256 "527e9a784c4f525c4162dd8b9901f0293c9847f29635709204a6b0a5ab613a69"
+    sha256 "b2230794bad55fec36566faff35128b213084b2d10cd271ceb7070541e003506"
   end
 
   name "PRTGBar"
