@@ -1,14 +1,14 @@
 cask "canopy" do
-  version "1.0.0,v2026.02.06-1519"
+  version "1.0.0,v2026.03.20-1302"
 
   on_arm do
     url "https://github.com/konradmichalik/canopy/releases/download/#{version.after_comma}/Canopy_#{version.before_comma}_aarch64.dmg"
-    sha256 "ec9e39a26e8a18062eaf15430b12e08aa75b3d4500b8682fdb29a586d69d2199"
+    sha256 "2078dab13bb4130b6d83b3bedb584be47a3da40425ca1e8aca0f545e94cf0b47"
   end
 
   on_intel do
     url "https://github.com/konradmichalik/canopy/releases/download/#{version.after_comma}/Canopy_#{version.before_comma}_x64.dmg"
-    sha256 "aff635715d3d2142bf23acabd0cdd0b4788a482e21cfcbd15c21625447a75cd2"
+    sha256 "fa3ffb1e1f907d472bc3fa71506098592e1f8b15815da197f2c65adcfc5ea0b8"
   end
 
   name "Canopy"
@@ -16,11 +16,6 @@ cask "canopy" do
   homepage "https://github.com/konradmichalik/canopy"
 
   app "Canopy.app"
-
-  postflight do
-    system_command "/usr/bin/xattr",
-                   args: ["-cr", "#{appdir}/Canopy.app"]
-  end
 
   zap trash: [
     "~/Library/Application Support/com.canopy.jira-viewer",
