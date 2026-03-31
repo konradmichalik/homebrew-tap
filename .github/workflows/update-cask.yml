@@ -190,6 +190,39 @@ jobs:
           RUBY
             sed -i "s/__VERSION__/${VERSION}/g; s/__TAG__/${TAG}/g; s/__SHA_ARM__/${SHA_ARM}/g; s/__SHA_INTEL__/${SHA_INTEL}/g" Casks/prtgbar.rb
 
+          elif [ "$APP" = "spark" ]; then
+            cat > Casks/spark.rb <<'RUBY'
+          cask "spark" do
+            version "__VERSION__,__TAG__"
+
+            on_arm do
+              url "https://github.com/konradmichalik/spark/releases/download/#{version.after_comma}/Spark-aarch64-apple-darwin.dmg"
+              sha256 "__SHA_ARM__"
+            end
+
+            on_intel do
+              url "https://github.com/konradmichalik/spark/releases/download/#{version.after_comma}/Spark-x86_64-apple-darwin.dmg"
+              sha256 "__SHA_INTEL__"
+            end
+
+            name "Spark"
+            desc "Native macOS menu bar app that shows your Claude Code usage at a glance"
+            homepage "https://github.com/konradmichalik/spark"
+
+            app "Spark.app"
+
+            postflight do
+              system_command "/usr/bin/xattr",
+                             args: ["-cr", "#{appdir}/Spark.app"]
+            end
+
+            zap trash: [
+              "~/Library/Preferences/com.konradmichalik.spark.plist",
+            ]
+          end
+          RUBY
+            sed -i "s/__VERSION__/${VERSION}/g; s/__TAG__/${TAG}/g; s/__SHA_ARM__/${SHA_ARM}/g; s/__SHA_INTEL__/${SHA_INTEL}/g" Casks/spark.rb
+
           else
             echo "Unknown app: ${APP}"
             exit 1
