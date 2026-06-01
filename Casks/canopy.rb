@@ -1,14 +1,14 @@
 cask "canopy" do
-  version "1.0.0,v2026.06.01-1051"
+  version "1.0.0,v2026.06.01-1609"
 
   on_arm do
     url "https://github.com/konradmichalik/canopy/releases/download/#{version.after_comma}/Canopy_#{version.before_comma}_aarch64.dmg"
-    sha256 "070563e3f0bb7ca3cab183e293e35889064c07cc3f50c2f4253c6d4e8e749315"
+    sha256 "f39e8c89f0ec8003c72c9d267a1d5e28e5cbf49b30de5815c0d233acd1867ed3"
   end
 
   on_intel do
     url "https://github.com/konradmichalik/canopy/releases/download/#{version.after_comma}/Canopy_#{version.before_comma}_x64.dmg"
-    sha256 "8cb4626d0de8f0bb4cd15dc941841c9e4336944d6acdd53f05ade25efefd4534"
+    sha256 "0862c38a80ed1d69ffd1ce0feb7ab03d489111b092cb4babb63a3c41ee0c6e44"
   end
 
   name "Canopy"
