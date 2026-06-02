@@ -1,14 +1,14 @@
 cask "roots" do
-  version "0.1.0,v2026.04.10-1057"
+  version "0.1.0,v2026.06.02-1037"
 
   on_arm do
     url "https://github.com/konradmichalik/roots/releases/download/#{version.after_comma}/Roots_#{version.before_comma}_aarch64.dmg"
-    sha256 "a02cdaddaa81337da0b12f889e5a0c0b1a46c8a155cac2a95d833586538facce"
+    sha256 "2b5a56215e70831eff964661827fbec31e1e6a1bb6a0de5e11a725f0d6a71b3b"
   end
 
   on_intel do
     url "https://github.com/konradmichalik/roots/releases/download/#{version.after_comma}/Roots_#{version.before_comma}_x64.dmg"
-    sha256 "c3bdb21f4ea476a4257718b3a2bee27a5f71f8d3b65d8554b8db7d7b2b63be3a"
+    sha256 "150785a22614e390562bcbead40da7a50b1b0b1b78eaf5f6d608732290a22b15"
   end
 
   name "Roots"
