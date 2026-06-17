@@ -1,14 +1,14 @@
 cask "devcap-app" do
-  version "0.6.3,v0.6.3"
+  version "0.6.4,v0.6.4"
 
   on_arm do
     url "https://github.com/konradmichalik/devcap-app/releases/download/#{version.after_comma}/devcap-arm64-apple-darwin.dmg"
-    sha256 "6fae2c6ec216af5b68fb08acfe666caeec520244748d89664b32fcfc40d3cf2e"
+    sha256 "a4a8734909c148e70ed8cda21386f1db131ed35fd5dcf0c3b93355ca5db1a117"
   end
 
   on_intel do
     url "https://github.com/konradmichalik/devcap-app/releases/download/#{version.after_comma}/devcap-x86_64-apple-darwin.dmg"
-    sha256 "80fdd8df26c4c8df9e8072fe4bf1526db0d05a2ae99c6295422e5bf9623a3a23"
+    sha256 "6803eea4deece0c516ce9d91fe793234dabe4962f6ee6f45e59bf5e6dfef4702"
   end
 
   name "devcap.app"
