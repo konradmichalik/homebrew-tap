@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      actions: write
 
     steps:
       - name: Checkout
@@ -229,6 +230,8 @@ jobs:
           fi
 
       - name: Commit and push
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           APP="${{ github.event.client_payload.app }}"
           TAG="${{ github.event.client_payload.tag }}"
@@ -238,3 +241,5 @@ jobs:
           git diff --cached --quiet && echo "No changes" && exit 0
           git commit -m "chore: update ${APP} to ${TAG}"
           git push
+          # GITHUB_TOKEN pushes don't trigger other workflows; dispatch the Pages rebuild explicitly.
+          gh workflow run pages.yml
