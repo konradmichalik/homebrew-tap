@@ -1,14 +1,14 @@
 cask "spark" do
-  version "0.5.5,v0.5.5"
+  version "0.6.0,v0.6.0"
 
   on_arm do
     url "https://github.com/konradmichalik/spark/releases/download/#{version.after_comma}/Spark-aarch64-apple-darwin.dmg"
-    sha256 "f00cd58ab2887d2605606ebb5fc95a69a607d87d35599925bd594613ce70b4ea"
+    sha256 "e604ebb30b72fced87c87525d4d62187e8cb42ab1878db01c5ec20345d71481b"
   end
 
   on_intel do
     url "https://github.com/konradmichalik/spark/releases/download/#{version.after_comma}/Spark-x86_64-apple-darwin.dmg"
-    sha256 "7d71d2bfeb31bbdff70241b53b7d21990fa8f28cff703dcdc2c1f452bc24d4fd"
+    sha256 "f7f810c89445f32b79c6e30d70c50402ede71b712e9098d993d058fabdd0cfcc"
   end
 
   name "Spark"
