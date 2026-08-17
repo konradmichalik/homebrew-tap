@@ -224,6 +224,39 @@ jobs:
           RUBY
             sed -i "s/__VERSION__/${VERSION}/g; s/__TAG__/${TAG}/g; s/__SHA_ARM__/${SHA_ARM}/g; s/__SHA_INTEL__/${SHA_INTEL}/g" Casks/spark.rb
 
+          elif [ "$APP" = "vitals-app" ]; then
+            cat > Casks/vitals-app.rb <<'RUBY'
+          cask "vitals-app" do
+            version "__VERSION__,__TAG__"
+
+            on_arm do
+              url "https://github.com/konradmichalik/vitals/releases/download/#{version.after_comma}/VitalsApp-aarch64-apple-darwin.dmg"
+              sha256 "__SHA_ARM__"
+            end
+
+            on_intel do
+              url "https://github.com/konradmichalik/vitals/releases/download/#{version.after_comma}/VitalsApp-x86_64-apple-darwin.dmg"
+              sha256 "__SHA_INTEL__"
+            end
+
+            name "vitals-app"
+            desc "Menubar app that correlates system metrics with your dev toolchain and surfaces named diagnoses"
+            homepage "https://github.com/konradmichalik/vitals"
+
+            app "VitalsApp.app"
+
+            postflight do
+              system_command "/usr/bin/xattr",
+                             args: ["-cr", "#{appdir}/VitalsApp.app"]
+            end
+
+            zap trash: [
+              "~/Library/Preferences/com.konradmichalik.vitals.plist",
+            ]
+          end
+          RUBY
+            sed -i "s/__VERSION__/${VERSION}/g; s/__TAG__/${TAG}/g; s/__SHA_ARM__/${SHA_ARM}/g; s/__SHA_INTEL__/${SHA_INTEL}/g" Casks/vitals-app.rb
+
           else
             echo "Unknown app: ${APP}"
             exit 1

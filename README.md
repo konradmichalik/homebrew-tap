@@ -13,6 +13,7 @@ brew tap konradmichalik/tap
 | Formula | Description |
 |---------|-------------|
 | [`devcap`](https://github.com/konradmichalik/devcap) | Aggregate git commits across repos for standups and time tracking |
+| [`vitals`](https://github.com/konradmichalik/vitals) | Vital signs of your local dev stack |
 
 ### devcap
 
@@ -20,6 +21,14 @@ brew tap konradmichalik/tap
 
 ```bash
 brew install konradmichalik/tap/devcap
+```
+
+### vitals
+
+[![version](https://img.shields.io/endpoint?url=https%3A%2F%2Fkonradmichalik.github.io%2Fhomebrew-tap%2Fbadges%2Fvitals-version.json&style=flat-square&logo=homebrew)](https://github.com/konradmichalik/vitals) [![downloads](https://img.shields.io/endpoint?url=https%3A%2F%2Fkonradmichalik.github.io%2Fhomebrew-tap%2Fbadges%2Fvitals-downloads.json&style=flat-square&logo=homebrew)](https://github.com/konradmichalik/vitals)
+
+```bash
+brew install konradmichalik/tap/vitals
 ```
 
 ## Available Casks
@@ -32,6 +41,7 @@ brew install konradmichalik/tap/devcap
 | [`beacon`](https://github.com/konradmichalik/beacon) | GitHub & GitLab notification hub for your macOS menu bar |
 | [`prtgbar`](https://github.com/konradmichalik/prtgbar) | PRTG Network Monitor in your macOS menu bar |
 | [`spark`](https://github.com/konradmichalik/spark) | Native macOS menu bar app that shows your Claude Code usage at a glance |
+| [`vitals-app`](https://github.com/konradmichalik/vitals) | Menubar app for local dev stack diagnostics |
 
 ### devcap-app
 
@@ -79,4 +89,12 @@ brew install --cask konradmichalik/tap/prtgbar
 
 ```bash
 brew install --cask konradmichalik/tap/spark
+```
+
+### vitals-app
+
+[![version](https://img.shields.io/endpoint?url=https%3A%2F%2Fkonradmichalik.github.io%2Fhomebrew-tap%2Fbadges%2Fvitals-app-version.json&style=flat-square&logo=homebrew)](https://github.com/konradmichalik/vitals) [![downloads](https://img.shields.io/endpoint?url=https%3A%2F%2Fkonradmichalik.github.io%2Fhomebrew-tap%2Fbadges%2Fvitals-app-downloads.json&style=flat-square&logo=homebrew)](https://github.com/konradmichalik/vitals)
+
+```bash
+brew install --cask konradmichalik/tap/vitals-app
 ```
