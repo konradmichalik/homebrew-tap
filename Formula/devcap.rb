@@ -1,17 +1,17 @@
 class Devcap < Formula
   desc "Aggregate git commits across repos for standups and time tracking"
   homepage "https://github.com/konradmichalik/devcap"
-  version "0.6.1"
+  version "0.7.0"
   license "MIT"
 
   on_arm do
     url "https://github.com/konradmichalik/devcap/releases/download/v#{version}/devcap-arm64-apple-darwin.tar.gz"
-    sha256 "b8ac6a3bb92be395d9df04372c682518b9117d24fbecb0e1780eb8430a3b3fba"
+    sha256 "2263d6aebc1f3542d19a7458bfe8792ca6fb4034fce2e44642af478a3e9d0f1e"
   end
 
   on_intel do
     url "https://github.com/konradmichalik/devcap/releases/download/v#{version}/devcap-x86_64-apple-darwin.tar.gz"
-    sha256 "dbe860ff02ad2eadebba1ddd07c3a145adfbaefcf8e03526faf9acf7d441eef2"
+    sha256 "8ec04554f063451edc697d687eeb2c838dd0df784d096ec30e6dd6fb9043fc30"
   end
 
   def install
