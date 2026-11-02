@@ -1,14 +1,14 @@
 cask "beacon" do
-  version "0.18.0,v0.18.0"
+  version "0.18.1,v0.18.1"
 
   on_arm do
     url "https://github.com/konradmichalik/beacon/releases/download/#{version.after_comma}/Beacon_#{version.before_comma}_aarch64.dmg"
-    sha256 "6762467fd868a708ed15d334d624feabe4c5cd212cdc07c7dbc84c7bf93c55f9"
+    sha256 "02ab8d11efb2cfc934c9fcfb4b260eeeb5420dde7915fc2ea9475a6fa5f95ba4"
   end
 
   on_intel do
     url "https://github.com/konradmichalik/beacon/releases/download/#{version.after_comma}/Beacon_#{version.before_comma}_x64.dmg"
-    sha256 "c6bc3e7f47cbf5057a45220e71e11452087f0abfce4ad6010942390030fe803b"
+    sha256 "7865ea9b18103900dd2b42ceb600fd572be7af9ee50383c267c0adc8ae344908"
   end
 
   name "Beacon"
