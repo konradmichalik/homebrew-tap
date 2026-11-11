@@ -42,6 +42,7 @@ brew install konradmichalik/tap/vitals
 | [`prtgbar`](https://github.com/konradmichalik/prtgbar) | PRTG Network Monitor in your macOS menu bar |
 | [`spark`](https://github.com/konradmichalik/spark) | Native macOS menu bar app that shows your Claude Code usage at a glance |
 | [`vitals-app`](https://github.com/konradmichalik/vitals) | Menubar app for local dev stack diagnostics |
+| [`nod`](https://github.com/konradmichalik/nod) | Knows which display you turn your head to, via AirPods or the camera |
 
 ### devcap-app
 
@@ -97,4 +98,12 @@ brew install --cask konradmichalik/tap/spark
 
 ```bash
 brew install --cask konradmichalik/tap/vitals-app
+```
+
+### nod
+
+[![version](https://img.shields.io/endpoint?url=https%3A%2F%2Fkonradmichalik.github.io%2Fhomebrew-tap%2Fbadges%2Fnod-version.json&style=flat-square&logo=homebrew)](https://github.com/konradmichalik/nod) [![downloads](https://img.shields.io/endpoint?url=https%3A%2F%2Fkonradmichalik.github.io%2Fhomebrew-tap%2Fbadges%2Fnod-downloads.json&style=flat-square&logo=homebrew)](https://github.com/konradmichalik/nod)
+
+```bash
+brew install --cask konradmichalik/tap/nod
 ```

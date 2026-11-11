@@ -257,6 +257,41 @@ jobs:
           RUBY
             sed -i "s/__VERSION__/${VERSION}/g; s/__TAG__/${TAG}/g; s/__SHA_ARM__/${SHA_ARM}/g; s/__SHA_INTEL__/${SHA_INTEL}/g" Casks/vitals-app.rb
 
+          elif [ "$APP" = "nod" ]; then
+            cat > Casks/nod.rb <<'RUBY'
+          cask "nod" do
+            version "__VERSION__,__TAG__"
+
+            on_arm do
+              url "https://github.com/konradmichalik/nod/releases/download/#{version.after_comma}/nod-aarch64-apple-darwin.dmg"
+              sha256 "__SHA_ARM__"
+            end
+
+            on_intel do
+              url "https://github.com/konradmichalik/nod/releases/download/#{version.after_comma}/nod-x86_64-apple-darwin.dmg"
+              sha256 "__SHA_INTEL__"
+            end
+
+            name "nod"
+            desc "Knows which display you turn your head to, measured by your AirPods or the camera"
+            homepage "https://github.com/konradmichalik/nod"
+
+            depends_on macos: ">= :sonoma"
+
+            app "nod.app"
+
+            postflight do
+              system_command "/usr/bin/xattr",
+                             args: ["-cr", "#{appdir}/nod.app"]
+            end
+
+            zap trash: [
+              "~/Library/Preferences/com.konradmichalik.nod.plist",
+            ]
+          end
+          RUBY
+            sed -i "s/__VERSION__/${VERSION}/g; s/__TAG__/${TAG}/g; s/__SHA_ARM__/${SHA_ARM}/g; s/__SHA_INTEL__/${SHA_INTEL}/g" Casks/nod.rb
+
           else
             echo "Unknown app: ${APP}"
             exit 1
